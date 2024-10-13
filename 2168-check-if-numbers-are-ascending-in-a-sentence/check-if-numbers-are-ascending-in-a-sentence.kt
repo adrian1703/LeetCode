@@ -1,12 +1,11 @@
 class Solution {
-     fun areNumbersAscending(s: String): Boolean {
+    fun areNumbersAscending(s: String): Boolean {
         var currentNumber = -1
         var nextNumber = 0
         var counting = false
-        var index = 0
-        while (index < s.length) {
-            if(s[index].isDigit()) {
-                nextNumber = nextNumber * 10 + s[index].digitToInt()
+        for (element in s) {
+            if(element.isDigit()) {
+                nextNumber = nextNumber * 10 + element.digitToInt()
                 counting = true
             } else if(counting) {
                 if (nextNumber <= currentNumber)
@@ -15,7 +14,6 @@ class Solution {
                 nextNumber = 0
                 counting = false
             }
-            index++
         }
         return if(counting) nextNumber > currentNumber else true
     }
